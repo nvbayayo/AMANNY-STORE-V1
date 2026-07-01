@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Checkout | AMANNY STORE</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+<div class="logo">⚔️ AMANNY STORE</div>
+</nav>
+
+<div class="checkout-container">
+
+<div class="checkout-card">
+
+<h2>MLBB Checkout</h2>
+
+<div class="order-summary">
+
+<h3>Order Summary</h3>
+
+<div class="summary-row">
+<span>Server</span>
+<strong id="serverName">-</strong>
+</div>
+
+<div class="summary-row">
+<span>Package</span>
+<strong id="packageName">-</strong>
+</div>
+
+<div class="summary-row">
+<span>Price</span>
+<strong>₹<span id="packagePrice">0</span></strong>
+</div>
+
+</div>
+
+<hr>
+
+<h3>Game Information</h3>
+
+<input
+type="text"
+id="userId"
+placeholder="MLBB User ID"
+required
+>
+
+<input
+type="text"
+id="zoneId"
+placeholder="Zone ID"
+required
+>
+
+<button onclick="continuePayment()">
+Continue to Payment
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const server =
+localStorage.getItem("server_name");
+
+const packageName =
+localStorage.getItem("package_name");
+
+const price =
+localStorage.getItem("package_price");
+
+document.getElementById("serverName").textContent =
+server || "-";
+
+document.getElementById("packageName").textContent =
+packageName || "-";
+
+document.getElementById("packagePrice").textContent =
+price || "0";
+
+function continuePayment(){
+
+const userId =
+document.getElementById("userId").value.trim();
+
+const zoneId =
+document.getElementById("zoneId").value.trim();
+
+if(!userId || !zoneId){
+
+alert("Please enter User ID and Zone ID");
+return;
+
+}
+
+localStorage.setItem(
+"mlbb_user_id",
+userId
+);
+
+localStorage.setItem(
+"mlbb_zone_id",
+zoneId
+);
+
+window.location.href =
+"payment.html";
+
+}
+
+</script>
+
+</body>
+</html>
