@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Register | AMANNY STORE</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="auth-container">
+
+<div class="auth-card">
+
+<h1>⚔️ AMANNY STORE</h1>
+
+<h2>Create Account</h2>
+
+<input
+type="text"
+id="name"
+placeholder="Full Name"
+required
+>
+
+<input
+type="email"
+id="email"
+placeholder="Email Address"
+required
+>
+
+<div class="password-box">
+
+<input
+type="password"
+id="password"
+placeholder="Password"
+oninput="checkStrength()"
+required
+>
+
+<button
+type="button"
+onclick="togglePassword()">
+👁
+</button>
+
+</div>
+
+<div
+id="strengthText"
+class="strength-text">
+Password Strength
+</div>
+
+<input
+type="password"
+id="confirmPassword"
+placeholder="Confirm Password"
+required
+>
+
+<label class="terms">
+
+<input
+type="checkbox"
+id="terms"
+>
+
+I agree to the Terms & Conditions
+
+</label>
+
+<button onclick="register()">
+
+Create Account
+
+</button>
+
+<p class="auth-footer">
+
+Already have an account?
+
+<a href="login.html">
+Login
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+<script src="js/auth.js"></script>
+
+<script>
+
+function togglePassword(){
+
+const password =
+document.getElementById("password");
+
+password.type =
+password.type === "password"
+? "text"
+: "password";
+
+}
+
+function checkStrength(){
+
+const password =
+document.getElementById("password").value;
+
+const text =
+document.getElementById("strengthText");
+
+if(password.length < 6){
+
+text.innerHTML =
+"🔴 Weak Password";
+
+text.style.color =
+"#ef4444";
+
+}else if(password.length < 10){
+
+text.innerHTML =
+"🟡 Medium Password";
+
+text.style.color =
+"#f59e0b";
+
+}else{
+
+text.innerHTML =
+"🟢 Strong Password";
+
+text.style.color =
+"#22c55e";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
