@@ -1,0 +1,156 @@
+/* ADMIN PAGE */
+
+.admin-container{
+max-width:1200px;
+margin:auto;
+padding:30px 20px;
+}
+
+.admin-container h1{
+margin-bottom:25px;
+text-align:center;
+}
+
+/* STATS */
+
+.admin-stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-bottom:30px;
+}
+
+.admin-card{
+background:#141b34;
+padding:25px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 4px 12px rgba(0,0,0,.25);
+}
+
+.admin-card h3{
+margin-bottom:10px;
+font-size:18px;
+}
+
+.admin-card p{
+font-size:28px;
+font-weight:700;
+color:#22c55e;
+}
+
+/* ORDERS SECTION */
+
+.admin-orders{
+background:#141b34;
+padding:20px;
+border-radius:15px;
+overflow-x:auto;
+box-shadow:0 4px 12px rgba(0,0,0,.25);
+}
+
+.admin-orders h2{
+margin-bottom:20px;
+}
+
+/* TABLE */
+
+table{
+width:100%;
+border-collapse:collapse;
+min-width:900px;
+}
+
+thead{
+background:#1f294d;
+}
+
+th{
+padding:15px;
+text-align:left;
+font-weight:600;
+}
+
+td{
+padding:15px;
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+tr:hover{
+background:rgba(255,255,255,.03);
+}
+
+/* STATUS BADGES */
+
+.pending{
+background:#f59e0b;
+color:#fff;
+padding:5px 10px;
+border-radius:20px;
+font-size:12px;
+font-weight:600;
+}
+
+.approved{
+background:#22c55e;
+color:#fff;
+padding:5px 10px;
+border-radius:20px;
+font-size:12px;
+font-weight:600;
+}
+
+.rejected{
+background:#ef4444;
+color:#fff;
+padding:5px 10px;
+border-radius:20px;
+font-size:12px;
+font-weight:600;
+}
+
+/* ACTION BUTTONS */
+
+.action-btn{
+padding:8px 12px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:13px;
+margin-right:5px;
+}
+
+.approve-btn{
+background:#22c55e;
+color:#fff;
+}
+
+.reject-btn{
+background:#ef4444;
+color:#fff;
+}
+
+.delete-btn{
+background:#6b7280;
+color:#fff;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.admin-container{
+padding:20px 10px;
+}
+
+.admin-card p{
+font-size:22px;
+}
+
+th,
+td{
+padding:10px;
+font-size:13px;
+}
+
+}
