@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MLBB Top Up | AMANNY STORE</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+
+<div class="logo">
+⚔️ AMANNY STORE
+</div>
+
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="products.html">Top Up</a></li>
+<li><a href="dashboard.html">Dashboard</a></li>
+<li><a href="login.html">Login</a></li>
+</ul>
+
+</nav>
+
+<section class="server-section">
+
+<h2 class="server-title">
+🌍 Select Server
+</h2>
+
+<select
+id="serverSelect"
+style="
+width:100%;
+padding:12px;
+border-radius:10px;
+background:#141b34;
+color:white;
+border:none;
+margin-bottom:25px;
+"
+>
+
+<option value="">
+Choose Server
+</option>
+
+</select>
+
+</section>
+
+<section class="server-section">
+
+<h2 class="server-title">
+💎 Available Packages
+</h2>
+
+<div
+id="packageGrid"
+class="product-grid">
+
+</div>
+
+</section>
+
+<script type="module">
+
+import { servers } from "./js/data.js";
+
+const serverSelect =
+document.getElementById("serverSelect");
+
+const packageGrid =
+document.getElementById("packageGrid");
+
+/* Load Servers */
+
+servers.forEach((server,index)=>{
+
+const option =
+document.createElement("option");
+
+option.value = index;
+option.textContent = server.name;
+
+serverSelect.appendChild(option);
+
+});
+
+/* Server Change */
+
+serverSelect.addEventListener("change",()=>{
+
+packageGrid.innerHTML = "";
+
+const selected =
+servers[serverSelect.value];
+
+if(!selected) return;
+
+selected.packages.forEach(pkg=>{
+
+const card =
+document.createElement("div");
+
+card.className = "product-card";
+
+card.innerHTML = `
+<h3>${pkg.product}</h3>
+
+<p class="price">
+₹${pkg.price}
+</p>
+
+<button class="buy-btn">
+Buy Now
+</button>
+`;
+
+card.querySelector("button")
+.addEventListener("click",()=>{
+
+localStorage.setItem(
+"server_name",
+selected.name
+);
+
+localStorage.setItem(
+"package_name",
+pkg.product
+);
+
+localStorage.setItem(
+"package_price",
+pkg.price
+);
+
+window.location.href =
+"checkout.html";
+
+});
+
+packageGrid.appendChild(card);
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
