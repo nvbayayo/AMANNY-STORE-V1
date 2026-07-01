@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard | AMANNY STORE</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+
+<div class="logo">
+⚔️ AMANNY STORE ADMIN
+</div>
+
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="#" onclick="logoutAdmin()">Logout</a></li>
+</ul>
+
+</nav>
+
+<div class="admin-container">
+
+<h1>📊 Admin Dashboard</h1>
+
+<div class="admin-stats">
+
+<div class="admin-card">
+<h3>Total Orders</h3>
+<p id="totalOrders">0</p>
+</div>
+
+<div class="admin-card">
+<h3>Total Revenue</h3>
+<p id="totalRevenue">₹0</p>
+</div>
+
+<div class="admin-card">
+<h3>Pending Orders</h3>
+<p id="pendingOrders">0</p>
+</div>
+
+</div>
+
+<div class="admin-orders">
+
+<h2>📦 All Orders</h2>
+
+<table>
+
+<thead>
+
+<tr>
+<th>Package</th>
+<th>Server</th>
+<th>Price</th>
+<th>User ID</th>
+<th>Zone ID</th>
+<th>Date</th>
+<th>Status</th>
+</tr>
+
+</thead>
+
+<tbody id="ordersTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script>
+
+/* Simple Admin Login */
+
+const adminPassword = "admin123";
+
+if(
+sessionStorage.getItem("adminAuth")
+!== "true"
+){
+
+const pass =
+prompt("Enter Admin Password");
+
+if(pass !== adminPassword){
+
+alert("Access Denied");
+
+window.location.href =
+"index.html";
+
+}
+
+sessionStorage.setItem(
+"adminAuth",
+"true"
+);
+
+}
+
+/* Load Orders */
+
+const orders =
+JSON.parse(
+localStorage.getItem("orders")
+) || [];
+
+let revenue = 0;
+
+document.getElementById("totalOrders")
+.textContent =
+orders.length;
+
+document.getElementById("pendingOrders")
+.textContent =
+orders.length;
+
+const tbody =
+document.getElementById("ordersTable");
+
+orders.forEach(order => {
+
+revenue += Number(order.price);
+
+tbody.innerHTML += `
+<tr>
+
+<td>${order.product}</td>
+
+<td>${order.server}</td>
+
+<td>₹${order.price}</td>
+
+<td>${order.userId}</td>
+
+<td>${order.zoneId}</td>
+
+<td>${order.date || "-"}</td>
+
+<td>
+<span class="pending">
+Pending
+</span>
+</td>
+
+</tr>
+`;
+
+});
+
+document.getElementById(
+"totalRevenue"
+).textContent =
+"₹" + revenue;
+
+function logoutAdmin(){
+
+sessionStorage.removeItem(
+"adminAuth"
+);
+
+window.location.href =
+"index.html";
+
+}
+
+</script>
+
+</body>
+</html>
