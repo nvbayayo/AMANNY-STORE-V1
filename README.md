@@ -1,1 +1,0 @@
-# AMANNY-STORE-V1
